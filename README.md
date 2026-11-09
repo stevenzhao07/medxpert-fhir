@@ -28,6 +28,19 @@ Medical-device regulatory **bilingual (EN/ZH) terminology** exposed as **FHIR R5
 | ConceptMap | [medxpert-zh-mistranslation](ConceptMap/medxpert-zh-mistranslation.json) | ZH→mistranslation correction (36) |
 | ImplementationGuide | [medxpert-meddev-terminology](ImplementationGuide/medxpert-meddev-terminology.json) | IG shell packaging all resources |
 
+## Prerequisites
+
+`build_fhir.py` reads `termbase.tsv` and `mistranslations.tsv` from the **repository root**, and neither file is stored here — a fresh clone fails with `FileNotFoundError`. Fetch them first:
+
+```bash
+git clone https://github.com/stevenzhao07/medxpert-skills
+git clone https://github.com/stevenzhao07/medxpert-fhir && cd medxpert-fhir
+cp ../medxpert-skills/skills/skills-medxpert-termbase-*/references/termbase.tsv .
+cp ../medxpert-skills/skills/skills-medxpert-termbase-*/references/mistranslations.tsv .
+```
+
+On Windows the wildcard directory must be expanded to the real folder name, and `cp` becomes `copy` (PowerShell: `Copy-Item`).
+
 ## Reproduction
 
 ```bash
